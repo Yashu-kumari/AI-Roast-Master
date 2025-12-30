@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - AI Roast Master</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); min-height: 100vh; color: white; }
+        .nav { background: rgba(0,0,0,0.2); padding: 15px 0; text-align: center; }
+        .nav a { color: white; text-decoration: none; margin: 0 20px; padding: 10px 20px; border-radius: 25px; background: rgba(255,255,255,0.1); transition: all 0.3s; }
+        .nav a:hover, .nav a.active { background: rgba(255,255,255,0.3); }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; text-align: center; }
+        .hero { padding: 50px 0; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+        .upload-card { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; margin: 30px 0; }
+        .upload-zone { border: 3px dashed rgba(255,255,255,0.3); border-radius: 15px; padding: 60px 20px; cursor: pointer; transition: all 0.3s; }
+        .upload-zone:hover { border-color: #ff6b6b; background: rgba(255,107,107,0.1); }
+        .style-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 30px 0; }
+        .style-btn { padding: 15px; border: none; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .savage { background: linear-gradient(45deg, #ff4757, #ff3742); color: white; }
+        .playful { background: linear-gradient(45deg, #2ed573, #17c0eb); color: white; }
+        .sarcastic { background: linear-gradient(45deg, #ffa502, #ff6348); color: white; }
+        .absurd { background: linear-gradient(45deg, #3742fa, #2f3542); color: white; }
+        .roast-btn { background: linear-gradient(45deg, #ff6b6b, #ee5a52); color: white; border: none; padding: 18px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; margin: 20px 0; }
+        .file-input { display: none; }
+        .loading { display: none; margin: 20px 0; }
+        .spinner { border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #ff6b6b; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .result-card { background: rgba(255,255,255,0.15); border-radius: 15px; padding: 30px; margin: 30px 0; border-left: 5px solid #ff6b6b; text-align: left; display: none; }
+        .result-card h3 { color: #ff6b6b; margin-bottom: 15px; }
+        .roast-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+        .style-btn.active { opacity: 1; transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>🔥 AI Roast Master</h1>
+            <p>Upload your photo and get roasted by AI!</p>
+        </div>
+        
+        <div class="upload-card">
+            <div class="upload-zone" onclick="document.getElementById('photoInput').click()">
+                <div>📸 Click to upload your photo</div>
+                <input type="file" id="photoInput" class="file-input" accept="image/*">
+            </div>
+            
+            <div class="style-grid">
+                <button class="style-btn savage">🔥 Savage Mode</button>
+                <button class="style-btn playful">😄 Playful Roast</button>
+                <button class="style-btn sarcastic">😏 Sarcastic Wit</button>
+                <button class="style-btn absurd">🤪 Absurd Humor</button>
+            </div>
+            
+            <button class="roast-btn" id="roastBtn" onclick="uploadAndRoast()" disabled>🔥 ROAST ME NOW!</button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>AI is analyzing your photo...</p>
+            </div>
+        </div>
+        
+        <div id="roastResult" class="result-card">
+            <h3>🔥 Your Roast:</h3>
+            <div class="roast-text" id="roastText"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentStyle = 'playful';
+        let currentFeatures = null;
+
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.querySelector('.upload-zone div').textContent = `📸 ${file.name}`;
+                document.getElementById('roastBtn').disabled = false;
+            }
+        });
+
+        document.querySelectorAll('.style-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentStyle = this.textContent.includes('Savage') ? 'savage' : 
+                              this.textContent.includes('Playful') ? 'playful' :
+                              this.textContent.includes('Sarcastic') ? 'sarcastic' : 'absurd';
+            });
+        });
+
+        async function uploadAndRoast() {
+            const fileInput = document.getElementById('photoInput');
+            if (!fileInput.files[0]) {
+                alert('Please select a photo first!');
+                return;
+            }
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('roastBtn').disabled = true;
+            document.getElementById('roastResult').style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('style', currentStyle);
+
+            try {
+                const response = await fetch('/roast', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                currentFeatures = result.features;
+                
+                document.getElementById('roastText').textContent = result.roast;
+                document.getElementById('roastResult').style.display = 'block';
+                document.getElementById('roastResult').scrollIntoView({ behavior: 'smooth' });
+            } catch (error) {
+                alert('Error: ' + error.message);
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('roastBtn').disabled = false;
+            }
+        }
+
+        // Set default active style
+        document.querySelector('.playful').classList.add('active');
+    </script>
+</body>
+</html>

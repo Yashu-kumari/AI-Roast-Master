@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery - AI Roast Master</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: white; }
+        .nav { background: rgba(0,0,0,0.2); padding: 15px 0; text-align: center; }
+        .nav a { color: white; text-decoration: none; margin: 0 20px; padding: 10px 20px; border-radius: 25px; background: rgba(255,255,255,0.1); transition: all 0.3s; }
+        .nav a:hover, .nav a.active { background: rgba(255,255,255,0.3); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .hero { text-align: center; padding: 50px 0; }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .roast-card { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px; border-left: 5px solid #ff6b6b; }
+        .roast-card h3 { color: #ff6b6b; margin-bottom: 10px; }
+        .roast-text { font-style: italic; line-height: 1.5; margin-bottom: 15px; }
+        .style-tag { display: inline-block; background: #ff6b6b; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; }
+        .savage-tag { background: #ff4757; }
+        .playful-tag { background: #2ed573; }
+        .sarcastic-tag { background: #ffa502; }
+        .absurd-tag { background: #3742fa; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/gallery" class="active">Gallery</a>
+        <a href="/contact">Contact</a>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>🖼️ Roast Gallery</h1>
+            <p>Check out some of our best AI-generated roasts!</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="roast-card">
+                <h3>🔥 Savage Roast</h3>
+                <p class="roast-text">"I've seen better composition in a toddler's finger painting, and at least theirs had artistic vision!"</p>
+                <span class="style-tag savage-tag">Savage</span>
+            </div>
+            
+            <div class="roast-card">
+                <h3>😄 Playful Roast</h3>
+                <p class="roast-text">"This photo has more filters than a coffee shop, but hey, we all need a little help sometimes!"</p>
+                <span class="style-tag playful-tag">Playful</span>
+            </div>
+            
+            <div class="roast-card">
+                <h3>😏 Sarcastic Roast</h3>
+                <p class="roast-text">"Oh wow, another selfie. How original. I'm sure this one will really stand out from the other million identical photos."</p>
+                <span class="style-tag sarcastic-tag">Sarcastic</span>
+            </div>
+            
+            <div class="roast-card">
+                <h3>🤪 Absurd Roast</h3>
+                <p class="roast-text">"This photo looks like it was taken by a confused penguin wearing sunglasses in a snowstorm!"</p>
+                <span class="style-tag absurd-tag">Absurd</span>
+            </div>
+            
+            <div class="roast-card">
+                <h3>🔥 Savage Roast</h3>
+                <p class="roast-text">"Your selfie game is so weak, even your phone's camera is embarrassed to be associated with it."</p>
+                <span class="style-tag savage-tag">Savage</span>
+            </div>
+            
+            <div class="roast-card">
+                <h3>😄 Playful Roast</h3>
+                <p class="roast-text">"Nice try with the lighting, but I don't think even Hollywood magic could save this shot!"</p>
+                <span class="style-tag playful-tag">Playful</span>
+            -</div>
+        </div>
+    </div>
+</body>
+</html>

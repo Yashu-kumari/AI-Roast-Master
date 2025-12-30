@@ -1,0 +1,63 @@
+{
+  "face_features": {
+    "large_face": [
+      "That face is so big, it has its own zip code!",
+      "I've seen smaller billboards!",
+      "Your face called - it wants its own area code!"
+    ],
+    "small_face": [
+      "I need a magnifying glass to see your features!",
+      "Your face is so small, it could fit in a locket!",
+      "Did you shrink in the wash?"
+    ],
+    "glasses": [
+      "Those glasses are so thick, you can see into the future!",
+      "Are those glasses or telescope lenses?",
+      "I bet you can see atoms with those things!"
+    ]
+  },
+  "photo_quality": {
+    "low_resolution": [
+      "This photo has fewer pixels than my patience!",
+      "Did you take this with a potato?",
+      "I've seen clearer images on a foggy day!"
+    ],
+    "dark_photo": [
+      "This photo is darker than my sense of humor!",
+      "Did you take this in a cave?",
+      "I need night vision goggles to see you!"
+    ],
+    "bright_photo": [
+      "This photo is brighter than your future!",
+      "Did you stare directly into the sun?",
+      "I need sunglasses to look at this!"
+    ]
+  },
+  "composition": {
+    "multiple_people": [
+      "Safety in numbers, smart choice!",
+      "Which one are you supposed to be?",
+      "Is this a group photo or a police lineup?"
+    ],
+    "selfie": [
+      "Another selfie? How original!",
+      "Your arm must be tired from all these selfies!",
+      "The front camera is not your friend!"
+    ]
+  },
+  "comebacks": {
+    "generic": [
+      "That's what they all say!",
+      "I've heard better comebacks from a broken boomerang!",
+      "Nice try, but I've seen sharper wit on a butter knife!",
+      "Is that your final answer or are you still loading?",
+      "I'd agree with you, but then we'd both be wrong!"
+    ],
+    "defensive": [
+      "Defensive much? I hit a nerve!",
+      "The truth hurts, doesn't it?",
+      "Someone's sensitive today!",
+      "Did I strike a chord or a whole orchestra?"
+    ]
+  }
+}
